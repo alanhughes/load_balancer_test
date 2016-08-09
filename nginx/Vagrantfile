@@ -1,6 +1,6 @@
 Vagrant.configure(2) do |config|
   boxCount = 2
-  appVMNameStub = "gobox"
+  appVMNameStub = "nginxbox"
 
   config.vm.box = "ubuntu/precise64"
 
