@@ -1,0 +1,29 @@
+---
+- hosts: all
+  # environment:
+  #   GOPATH: /home/vagrant/work/src
+  tasks:
+    - name: install daemon
+      apt: name=daemon state=latest
+
+    - name: install golang
+      apt: name=golang state=latest
+    - name: make workspace
+      shell: mkdir -p /home/vagrant/work/src/webapp
+    - name: copy source code
+      copy: src=/vagrant/go/src/webapp/webapp.go dest=/home/vagrant/work/src/webapp/webapp.go
+    - name: copy go PATH
+      copy: src=/vagrant/go/go-path.sh dest=/etc/profile.d/go-path.sh
+    - name: install goapp
+      shell: . /etc/profile.d/go-path.sh && go install webapp
+      notify:
+        - run webapp
+  handlers:
+      - name: run webapp
+        shell: daemon /home/vagrant/work/bin/webapp
+      # ignore_errors: True
+  #     notify:
+  #     - run webapp
+  # handlers:
+  #    - name: run webapp
+  #      command: /home/vagrant/work/bin/webapp/

@@ -1,0 +1,12 @@
+---
+- hosts: all
+  tasks:
+    - name: ensure nginx is at the latest version
+      apt: pkg=nginx state=latest
+    - name: add load-balancer config file
+      copy: src=/vagrant/nginx/files/load-balancer.conf dest=/etc/nginx/conf.d/load-balancer.conf owner=root group=root mode=0644
+      notify:
+      - restart nginx
+  handlers:
+     - name: restart nginx
+       service: name=nginx state=restarted
