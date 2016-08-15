@@ -1,6 +1,6 @@
 Prerequisites:
-- General: Vagrant and Virtual box are installed on your host PC
-- Non-Windows-Hosts: Ansible is installed (this has not been fully tested)
+- General: Vagrant and Virtualbox are installed on your host PC
+- Non-Windows-Hosts: Ansible is installed
 
 Instructions:
 - Clone this repo and navigate to the top level directory, containing the Vagrantfile
