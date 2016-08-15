@@ -11,9 +11,9 @@
     - name: make workspace
       file: path=/home/vagrant/work/src/webapp state=directory
     - name: copy source code
-      copy: src=./src/webapp/webapp.go dest=/home/vagrant/work/src/webapp/webapp.go
+      copy: src=/vagrant/go/src/webapp/webapp.go dest=/home/vagrant/work/src/webapp/webapp.go
     - name: copy go PATH
-      copy: src=./go-path.sh dest=/etc/profile.d/go-path.sh
+      copy: src=/vagrant/go/go-path.sh dest=/etc/profile.d/go-path.sh
     - name: install goapp
       shell: . /etc/profile.d/go-path.sh && go install webapp
       notify:
@@ -21,4 +21,9 @@
   handlers:
       - name: run webapp
         shell: daemon /home/vagrant/work/bin/webapp
-
+      # ignore_errors: True
+  #     notify:
+  #     - run webapp
+  # handlers:
+  #    - name: run webapp
+  #      command: /home/vagrant/work/bin/webapp/
