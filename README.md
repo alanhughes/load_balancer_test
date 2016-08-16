@@ -1,7 +1,9 @@
 Prerequisites:
 - General: Vagrant and Virtualbox are installed on your host PC
 - Non-Windows Hosts: Ansible is installed
-- Windows Hosts: The vagrant guest_ansible plugin is install. Run vagrant plugin install vagrant-guest_ansible to achieve this. See https://github.com/vovimayhem/vagrant-guest_ansible for more information 
+- Windows Hosts: 
+  1. The vagrant guest_ansible plugin is install. Run vagrant plugin install vagrant-guest_ansible to achieve this. See https://github.com/vovimayhem/vagrant-guest_ansible for more information.
+  2. Git Bash is installed - will be needed to run Vagrant commands
 
 Instructions:
 - Clone this repo and navigate to the top level directory, containing the Vagrantfile
